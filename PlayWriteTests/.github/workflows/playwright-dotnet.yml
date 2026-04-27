@@ -27,7 +27,7 @@ jobs:
         run: dotnet build --configuration Debug --no-restore
 
       - name: Install Playwright browsers
-        run: pwsh TestPlayWriteProject5/bin/Debug/net10.0/playwright.ps1 install --with-deps
+        run: pwsh PlayWriteTests/bin/Debug/net10.0/playwright.ps1 install --with-deps
 
       - name: Run Playwright tests
         run: dotnet test --logger "trx;LogFileName=test-results.trx"
@@ -36,4 +36,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report
-          path: TestPlayWriteProject5/bin/Debug/net10.0/playwright-report/
+          path: PlayWriteTests/bin/Debug/net10.0/playwright-report/
