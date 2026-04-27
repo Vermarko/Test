@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace TestPlayWriteProject5
+namespace PlayWriteTests
 {
     public class Organizzazione
     {
