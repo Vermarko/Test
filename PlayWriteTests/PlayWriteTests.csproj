@@ -24,6 +24,18 @@
     <PackageReference Include="NUnit3TestAdapter" Version="5.0.0" />
   </ItemGroup>
 
+  <!-- Copia il CSV nella cartella di output -->
+  <ItemGroup>
+    <None Update="Data\organizzazione.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <!-- Installa i browser Playwright dopo la build -->
+  <Target Name="PlaywrightInstall" AfterTargets="Build">
+    <Exec Command="pwsh bin\$(Configuration)\net10.0\playwright.ps1 install --with-deps" />
+  </Target>
+
   <ItemGroup>
     <Using Include="Microsoft.Playwright.NUnit" />
     <Using Include="NUnit.Framework" />
