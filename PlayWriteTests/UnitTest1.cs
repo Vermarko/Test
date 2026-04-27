@@ -87,7 +87,7 @@ namespace PlayWriteTests
             string? testTotUOcsv = TotUOcsv;
             //
             //await Expect(numeroUO).ToHaveTextAsync("44");
-            await Expect(totNumeroUO).ToContainTextAsync(TotUOcsv);
+            await Expect(totNumeroUO).ToContainTextAsync(TotUOcsv!);
         }
         public void Confronto(
           Organizzazione orgCsv,
@@ -122,8 +122,9 @@ namespace PlayWriteTests
                 }
                 else
                 {
-                    Assert.AreEqual(expected, actual,
-                     $"✔ {chiaveDizionario}: OK ({actual})");
+                   // Assert.AreEqual(expected, actual,
+                   //  $"✔ {chiaveDizionario}: OK ({actual})");
+                      TestContext.WriteLine($"✔ {chiaveDizionario}: OK ({actual})");
                 }
                 //// Confronto
                 //if (actual != expected)
