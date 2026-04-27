@@ -18,7 +18,7 @@ namespace PlayWriteTests
     [TestFixture]
     public class Tests : PageTest
     {
-        string inputFileOrganiz = @"C:\Git_project\unit_test\PlayWriteTests\Organizzazione.csv";
+        string inputFileOrganiz = Path.Combine(basePath, "Data", "Organizzazione.csv");
 
         List<Organizzazione> organizzazioneRecord = new();
 
