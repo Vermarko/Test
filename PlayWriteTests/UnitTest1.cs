@@ -18,6 +18,7 @@ namespace PlayWriteTests
     [TestFixture]
     public class Tests : PageTest
     {
+        var basePath = AppContext.BaseDirectory;
         string inputFileOrganiz = Path.Combine(basePath, "Data", "Organizzazione.csv");
 
         List<Organizzazione> organizzazioneRecord = new();
