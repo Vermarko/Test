@@ -28,7 +28,6 @@ namespace PlayWriteTests
             //
             var path = Path.Combine(TestContext.CurrentContext.WorkDirectory, "screenshots");
             Directory.CreateDirectory(path);
-            Directory.CreateDirectory("screenshots");
             await Page.ScreenshotAsync(new PageScreenshotOptions
             {
                 Path = Path.Combine(path, "screenshot.png"),
