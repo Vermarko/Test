@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+f<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
@@ -33,7 +33,7 @@
 
   <!-- Installa i browser Playwright dopo la build -->
   <Target Name="PlaywrightInstall" AfterTargets="Build">
-    <Exec Command="pwsh bin\$(Configuration)\net10.0\playwright.ps1 install --with-deps" />
+    <Exec Command="pwsh bin/$(Configuration)/net10.0/playwright.ps1 install --with-deps" />
   </Target>
 
   <ItemGroup>
