@@ -18,8 +18,6 @@ namespace PlayWriteTests
     [TestFixture]
     public class Tests : PageTest
     {
-       
-
         List<Organizzazione> organizzazioneRecord = new();
 
         [Test(Description = "Verifica il totale delle UO nella dashboard")]
