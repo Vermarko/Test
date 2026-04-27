@@ -18,8 +18,7 @@ namespace PlayWriteTests
     [TestFixture]
     public class Tests : PageTest
     {
-        string basePath = AppContext.BaseDirectory;
-        string inputFileOrganiz = Path.Combine(basePath, "Data", "Organizzazione.csv");
+       
 
         List<Organizzazione> organizzazioneRecord = new();
 
@@ -67,6 +66,8 @@ namespace PlayWriteTests
             //var titolo = await card1.Locator(".e-card-title").First.InnerTextAsync();
             //
             //**************************//EXCEL CSV//Organizzazione
+            var basePath = AppContext.BaseDirectory;
+            var inputFileOrganiz = Path.Combine(basePath, "Data", "Organizzazione.csv");
             using var readerOrg = new StreamReader(inputFileOrganiz);
             using var csv1 = new CsvReader(readerOrg, CultureInfo.InvariantCulture);
             //
