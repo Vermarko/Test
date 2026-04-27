@@ -26,7 +26,7 @@
 
   <!-- Copia il CSV nella cartella di output -->
   <ItemGroup>
-    <None Update="Data\organizzazione.csv">
+    <None Update="Data\Organizzazione.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
