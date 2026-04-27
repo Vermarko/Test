@@ -25,9 +25,11 @@ namespace PlayWriteTests
         {
 
             await Page.GotoAsync("https://vermarko.github.io/Test/dashboard.html");
+            //
+            Directory.CreateDirectory("screenshots");
             await Page.ScreenshotAsync(new PageScreenshotOptions
             {
-                Path = "screenshot.png",
+                Path = "screenshots/screenshot.png",
                 FullPage = true
             });
             // locator cards
