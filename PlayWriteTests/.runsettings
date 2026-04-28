@@ -5,7 +5,6 @@
     <DisableAppDomain>true</DisableAppDomain>
     <TargetFrameworkVersion>net10.0</TargetFrameworkVersion>
   </RunConfiguration>
-<RunSettings>
   <Playwright>
     <BrowserName>chromium</BrowserName>
     <LaunchOptions>
