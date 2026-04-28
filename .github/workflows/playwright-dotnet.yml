@@ -1,6 +1,6 @@
 name: Playwright Tests (.NET)
 env:
-  HEADLESS: true
+  HEADLESS: false
 on:
   push:
     branches: [ main ]
