@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RunSettings>
+  <RunConfiguration>
+    <DesignMode>false</DesignMode>
+    <DisableAppDomain>true</DisableAppDomain>
+    <TargetFrameworkVersion>net10.0</TargetFrameworkVersion>
+  </RunConfiguration>
+<RunSettings>
   <Playwright>
     <BrowserName>chromium</BrowserName>
     <LaunchOptions>
