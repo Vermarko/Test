@@ -123,7 +123,8 @@ namespace PlayWriteTests
                 {
                    // Assert.AreEqual(expected, actual,
                    //  $"✔ {chiaveDizionario}: OK ({actual})");
-                      TestContext.WriteLine($"✔ {chiaveDizionario}: OK ({actual})");
+                   await Expect(chiaveDizionario).ToContainTextAsync(actual);
+                //      TestContext.WriteLine($"✔ {chiaveDizionario}: OK ({actual})");
                 }
                 //// Confronto
                 //if (actual != expected)
