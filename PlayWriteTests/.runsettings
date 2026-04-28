@@ -11,5 +11,8 @@
       <Headless>false</Headless>
       <SlowMo>500</SlowMo>
     </LaunchOptions>
+    <Reporters>
+      <Reporter>html</Reporter>
+    </Reporters>
   </Playwright>
 </RunSettings>
