@@ -35,7 +35,7 @@ jobs:
         working-directory: PlayWriteTests
 
       - name: Run Playwright tests
-        run: dotnet test --settings .runsettings --logger "trx;LogFileName=test-results.trx"
+        run: dotnet test --logger "trx;LogFileName=test-results.trx"
         working-directory: PlayWriteTests
         
       - name: Generate HTML report
