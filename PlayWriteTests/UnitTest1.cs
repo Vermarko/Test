@@ -26,6 +26,7 @@ namespace PlayWriteTests
 
             await Page.GotoAsync("https://vermarko.github.io/Test/dashboard.html");
             //
+            Directory.CreateDirectory("./../../../Screenshot");
             await Page.ScreenshotAsync(new PageScreenshotOptions
              {
                  Path = "./../../../Screenshot/screenshot.png",
