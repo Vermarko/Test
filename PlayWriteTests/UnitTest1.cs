@@ -25,6 +25,7 @@ namespace PlayWriteTests
         {
 
             await Page.GotoAsync("https://vermarko.github.io/Test/dashboard.html");
+            Console.WriteLine("[OK] Titolo della pagina: " + await Page.TitleAsync());
             //
             var baseDir = TestContext.CurrentContext.WorkDirectory;
             var screenshotDir = Path.Combine(baseDir, "Screenshot");
@@ -67,7 +68,6 @@ namespace PlayWriteTests
             //}
             //
             // locator per prendere la prima card:
-
             var card1 = Page.Locator("div.e-card").Nth(0);
             var totNumeroUO = card1.Locator(".sipro-badge-size-10.text-dark").First;
             // Console.WriteLine("Totale Numero UO: " + await totNumeroUO.InnerTextAsync());
@@ -100,6 +100,7 @@ namespace PlayWriteTests
             //
             //await Expect(numeroUO).ToHaveTextAsync("44");
             await Expect(totNumeroUO).ToContainTextAsync(TotUOcsv!);
+            Console.WriteLine($"✔ Totale Numero UO: {await totNumeroUO.InnerTextAsync()}");
         }
         public void Confronto(
           Organizzazione orgCsv,
