@@ -128,7 +128,7 @@ namespace PlayWriteTests
                 {
                     Console.WriteLine($"❌ Manca la card: {chiaveDizionario}");
                     Assert.Fail($"❌ Manca la card: {chiaveDizionario}");
-                  //  continue;
+                    //  continue;
                 }
                 if (actual != expected)
                 {
@@ -138,9 +138,11 @@ namespace PlayWriteTests
                 else
                 {
                     Assert.AreEqual(expected, actual,
-                     $"✔ {chiaveDizionario}: OK ({actual})");     
-                     //TestContext.WriteLine($"✔ {chiaveDizionario}: OK ({actual})");
+                     $"✔ {chiaveDizionario}: OK ({actual})");
+                    //TestContext.WriteLine($"✔ {chiaveDizionario}: OK ({actual})");
                 }
+            }
+        }
                 //// Confronto
                 //if (actual != expected)
                 //{
