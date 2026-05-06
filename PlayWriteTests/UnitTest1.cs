@@ -26,12 +26,24 @@ namespace PlayWriteTests
 
             await Page.GotoAsync("https://vermarko.github.io/Test/dashboard.html");
             //
-            Directory.CreateDirectory("./../../../Screenshot");
+            var baseDir = TestContext.CurrentContext.WorkDirectory;
+            var screenshotDir = Path.Combine(baseDir, "Screenshot");
+            Directory.CreateDirectory(screenshotDir);
+            
+            var filePath = Path.Combine(screenshotDir, "screenshot.png");
+            
+            await Page.ScreenshotAsync(new PageScreenshotOptions
+            {
+                Path = filePath,
+                FullPage = true
+            });
+           /* Directory.CreateDirectory("./../../../Screenshot");
             await Page.ScreenshotAsync(new PageScreenshotOptions
              {
                  Path = "./../../../Screenshot/screenshot.png",
                  FullPage = true
              });
+             */
             // locator cards
             var card = Page.Locator("div.e-card");
             // conteggio cards pagina
