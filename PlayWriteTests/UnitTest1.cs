@@ -28,7 +28,7 @@ namespace PlayWriteTests
             //
             await Page.ScreenshotAsync(new PageScreenshotOptions
              {
-                 Path = "screenshot.png",
+                 Path = ""./../../../Screenshot/screenshot.png",
                  FullPage = true
              });
             // locator cards
