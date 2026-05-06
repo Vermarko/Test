@@ -20,6 +20,7 @@ namespace PlayWriteTests
     {
         List<Organizzazione> organizzazioneRecord = new();
         private RecordVideoSize? RecordVideoSize;
+
         [Test(Description = "Verifica il totale delle UO nella dashboard")]
         public async Task DashboardOrgTotaleUO()
         {
@@ -151,16 +152,13 @@ namespace PlayWriteTests
                 //    // Console.WriteLine($"✔ {chiaveDizionario}: OK ({actual})");
                 //    Assert.AreEqual(expected, actual, $"Conferma: {chiaveDizionario} è corretto");
                 //}
-
-
-            public override BrowserNewContextOptions ContextOptions()
+ public override BrowserNewContextOptions ContextOptions()
+        {
+            return new BrowserNewContextOptions
             {
-                return new BrowserNewContextOptions
-                {
-                    RecordVideoDir = "./../../../Videos/",
-                    RecordVideoSize = new() { Width = 1280, Height = 720 }
-                };
-            }
+                RecordVideoDir = "./../../../Videos/",
+                RecordVideoSize = new() { Width = 1280, Height = 720 }
+            };
+        }
     }
-    
 }
