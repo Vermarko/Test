@@ -19,7 +19,7 @@ namespace PlayWriteTests
     public class Tests : PageTest
     {
         List<Organizzazione> organizzazioneRecord = new();
-
+        private RecordVideoSize? RecordVideoSize;
         [Test(Description = "Verifica il totale delle UO nella dashboard")]
         public async Task DashboardOrgTotaleUO()
         {
@@ -27,6 +27,7 @@ namespace PlayWriteTests
             await Page.GotoAsync("https://vermarko.github.io/Test/dashboard.html");
             Console.WriteLine("[OK] Titolo della pagina: " + await Page.TitleAsync());
             //
+            RecordVideoSize = new() { Width = 1280, Height = 720 };
             var baseDir = TestContext.CurrentContext.WorkDirectory;
             var screenshotDir = Path.Combine(baseDir, "Screenshot");
             Directory.CreateDirectory(screenshotDir);
@@ -152,7 +153,14 @@ namespace PlayWriteTests
                 //}
 
 
+            public override BrowserNewContextOptions ContextOptions()
+            {
+                return new BrowserNewContextOptions
+                {
+                    RecordVideoDir = "./../../../Videos/",
+                    RecordVideoSize = new() { Width = 1280, Height = 720 }
+                };
             }
-        }
     }
+    
 }
