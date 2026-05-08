@@ -40,16 +40,16 @@ jobs:
         working-directory: PlayWriteTests
         
       - name: Generate HTML report
-        run: 
-            dotnet tool install dotnet-reportgenerator-globaltool --tool-path .
-           ./reportgenerator -reports:"**/test-results.trx" -targetdir:report -reporttypes:Html
-                  
-      - name: Upload Reports
-        uses: actions/upload-artifact@v4
+        run: |
+          dotnet tool install dotnet-reportgenerator-globaltool --tool-path .
+          ./reportgenerator "-reports:**/test-results.trx" "-targetdir:report" "-reporttypes:Html"
+            
+      - name: Upload Playwright report
+        uses: actions/upload-artifact@v4      
         with:
-          name: full-reports
-          # Puoi caricare sia il report HTML che quello di Playwright insieme
-          path: 
-             report/
-             PlayWriteTests/bin/Debug/net10.0/playwright-report/
+          name: playwright-report
+          path: |
+            report/
+            PlayWriteTests/bin/Debug/net10.0/playwright-report/
           if-no-files-found: warn
+
