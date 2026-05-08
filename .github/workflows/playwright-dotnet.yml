@@ -57,5 +57,4 @@ jobs:
         with:
           name: extent-report
           path: "**/TestResults/index.html"
-          working-directory: PlayWriteTests
           if-no-files-found: error
