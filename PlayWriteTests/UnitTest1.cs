@@ -1,3 +1,5 @@
+using AventStack.ExtentReports;
+using AventStack.ExtentReports.Reporter;
 using CsvHelper;
 using CsvHelper.Configuration.Attributes;
 using Microsoft.Playwright;
@@ -11,7 +13,6 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace PlayWriteTests
 {
     [Parallelizable(ParallelScope.Self)]
@@ -24,7 +25,14 @@ namespace PlayWriteTests
         [Test(Description = "Verifica il totale delle UO nella dashboard")]
         public async Task DashboardOrgTotaleUO()
         {
-
+            // ExtentReports setup
+            //
+            string reportPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestResults", "index.html");
+            var htmlReporter = new ExtentSparkReporter(reportPath);
+            //var htmlReporter = new ExtentSparkReporter("TestResults/index.html");
+            var extent = new ExtentReports();
+            extent.AttachReporter(htmlReporter);
+            //
             await Page.GotoAsync("https://vermarko.github.io/Test/dashboard.html");
             Console.WriteLine("[OK] Titolo della pagina: " + await Page.TitleAsync());
             //
@@ -64,6 +72,7 @@ namespace PlayWriteTests
                 if (!string.IsNullOrWhiteSpace(title))
                     result[title.Trim()] = value.Trim();
             }
+            var test = extent.CreateTest("Mio Primo Test Playwright");
             //foreach (var kvp in result)
             //{
             //    Console.WriteLine($"Titolo: {kvp.Key}, Valore: {kvp.Value}");
@@ -103,6 +112,10 @@ namespace PlayWriteTests
             //await Expect(numeroUO).ToHaveTextAsync("44");
             await Expect(totNumeroUO).ToContainTextAsync(TotUOcsv!);
             Console.WriteLine($"✔ Totale Numero UO: {await totNumeroUO.InnerTextAsync()}");
+            //
+            test.Pass("Il test è passato con successo!");
+            extent.Flush();
+            //
         }
         public void Confronto(
           Organizzazione orgCsv,
@@ -139,7 +152,6 @@ namespace PlayWriteTests
                 {
                     Assert.AreEqual(expected, actual,
                      $"✔ {chiaveDizionario}: OK ({actual})");
-                    //TestContext.WriteLine($"✔ {chiaveDizionario}: OK ({actual})");
                 }
             }
         }
