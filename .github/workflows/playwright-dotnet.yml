@@ -48,6 +48,13 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report
-          # Carichiamo solo la cartella nativa di Playwright
           path: PlayWriteTests/bin/Debug/net10.0/playwright-report/
           if-no-files-found: warn
+      
+      - name: Upload ExtentReport
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: extent-report
+          path: "**/TestResults/index.html"
+          if-no-files-found: error
