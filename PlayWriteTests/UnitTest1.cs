@@ -26,9 +26,20 @@ namespace PlayWriteTests
         public async Task DashboardOrgTotaleUO()
         {
             // ExtentReports setup
-            //
-            string reportPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestResults", "index.html");
+            string projectRoot = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", ".."));
+            string reportDirectory = Path.Combine(projectRoot, "TestReports");
+
+            if (!Directory.Exists(reportDirectory))
+            {
+                Directory.CreateDirectory(reportDirectory);
+            }
+
+            string reportPath = Path.Combine(reportDirectory, "index.html");
             var htmlReporter = new ExtentSparkReporter(reportPath);
+
+            //
+            //string reportPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestResults", "index.html");
+            //var htmlReporter = new ExtentSparkReporter(reportPath);
             //var htmlReporter = new ExtentSparkReporter("TestResults/index.html");
             var extent = new ExtentReports();
             extent.AttachReporter(htmlReporter);
@@ -72,7 +83,7 @@ namespace PlayWriteTests
                 if (!string.IsNullOrWhiteSpace(title))
                     result[title.Trim()] = value.Trim();
             }
-            var test = extent.CreateTest("Mio Primo Test Playwright");
+            var test = extent.CreateTest("Verifica il totale delle UO nella dashboard");
             //foreach (var kvp in result)
             //{
             //    Console.WriteLine($"Titolo: {kvp.Key}, Valore: {kvp.Value}");
@@ -113,7 +124,7 @@ namespace PlayWriteTests
             await Expect(totNumeroUO).ToContainTextAsync(TotUOcsv!);
             Console.WriteLine($"✔ Totale Numero UO: {await totNumeroUO.InnerTextAsync()}");
             //
-            test.Pass("Il test è passato con successo!");
+            test.Pass("Il test è passato con successo! " + $"✔ Totale Numero UO: {await totNumeroUO.InnerTextAsync()}");
             extent.Flush();
             //
         }
