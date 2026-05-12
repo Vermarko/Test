@@ -1,6 +1,4 @@
 name: Playwright Tests (.NET)
-env:
-  HEADLESS: false
 on:
   push:
     branches: [ main ]
@@ -39,23 +37,20 @@ jobs:
         run: dotnet test --logger "trx;LogFileName=test-results.trx"
         working-directory: PlayWriteTests
         
-      - name: Generate HTML report
-        run: |
-          dotnet tool install dotnet-reportgenerator-globaltool --tool-path .
-          ./reportgenerator "-reports:**/test-results.trx" "-targetdir:report" "-reporttypes:Html"
-            
-      - name: Upload Playwright report
+      - name: Upload ExtentReport Artifact
+        if: always() # Esegue il caricamento SEMPRE, fondamentale se il test fallisce per vedere gli screenshot
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report
-          path: PlayWriteTests/bin/Debug/net10.0/playwright-report/
-          if-no-files-found: warn
-      
-      - name: Upload ExtentReport
+          name: extent-test-report
+          # Cerca il file generato dalla tua classe Report.cs (il file si chiama Report.html)
+          path: "**/TestReports/Report.html" 
+          if-no-files-found: error
+
+      - name: Upload Screenshots Artifact (Opzionale)
         if: always()
         uses: actions/upload-artifact@v4
         with:
-         name: extent-report
-    # Cerca il file index.html ricorsivamente in tutto il workspace
-         path: "**/index.html" 
-         if-no-files-found: error
+          name: test-screenshots
+          # Carica anche la cartella degli screenshot per averli come backup scaricabile separatamente
+          path: "**/Screenshot/"
+          if-no-files-found: warn
