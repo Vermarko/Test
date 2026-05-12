@@ -69,14 +69,16 @@ namespace PlayWriteTests
                 var baseDir = TestContext.CurrentContext.WorkDirectory;
                 var screenshotDir = Path.Combine(baseDir, "Screenshot");
                 Directory.CreateDirectory(screenshotDir);
-
-                var filePath = Path.Combine(screenshotDir, "screenshot.png");
+                string screenshotName = $"Screenshot_{DateTime.Now:yyyyMMdd_HHmmss}.png";
+                var filePath = Path.Combine(screenshotDir, screenshotName);
 
                 await Page.ScreenshotAsync(new PageScreenshotOptions
                 {
                     Path = filePath,
                     FullPage = true
                 });
+                DashboardNode.Pass("Navigazione riuscita",
+           MediaEntityBuilder.CreateScreenCaptureFromPath(Path.Combine("Screenshots", screenshotName)).Build());
                 DashboardNode.Info("Apertura della pagina dei report");
                 /* Directory.CreateDirectory("./../../../Screenshot");
                  await Page.ScreenshotAsync(new PageScreenshotOptions
