@@ -40,7 +40,7 @@ jobs:
         if: always() # Esegue il caricamento SEMPRE, fondamentale se il test fallisce per vedere gli screenshot
         uses: actions/upload-artifact@v4
         with:
-          name: extent-test-report
+          name: test-report
           path: "**/TestReports/Report.html" 
           if-no-files-found: error
 
