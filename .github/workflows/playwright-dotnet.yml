@@ -52,5 +52,5 @@ jobs:
         with:
           name: test-screenshots
           # Carica anche la cartella degli screenshot per averli come backup scaricabile separatamente
-          path: "**/Screenshot/"
+          path: "PlayWriteTests/bin/Debug/net10.0/Screenshot/"
           if-no-files-found: warn
